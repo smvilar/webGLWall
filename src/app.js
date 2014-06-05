@@ -5,6 +5,12 @@ WallApp.init = function() {
     var BOARD_HEIGHT = 6000;
     var CARD_COUNT = 400;
 
+    WallApp.stats = new Stats();
+    WallApp.stats.domElement.style.position = 'absolute';
+    WallApp.stats.domElement.style.top = '0px';
+    WallApp.stats.domElement.style.left = '0px';
+    $("body").append(WallApp.stats.domElement);
+
     WallApp.stage = new PIXI.Stage(0x2557a7);
 
     WallApp.renderer = PIXI.autoDetectRenderer($(window).width(), $(window).height());
@@ -56,8 +62,10 @@ WallApp.resize = function() {
 };
 
 WallApp.gameLoop = function() {
+    WallApp.stats.begin();
     requestAnimFrame(WallApp.gameLoop);
     WallApp.renderer.render(WallApp.stage);
+    WallApp.stats.end();
 };
 
 $(document).ready(function() {
