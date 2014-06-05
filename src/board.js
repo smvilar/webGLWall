@@ -29,4 +29,10 @@ Board = function(width, height) {
         board.sprite.parent.y += (mousePos.y - board.lastPos.y) * PAN_SPEED;
         board.lastPos = mousePos;
     };
+
+    this.zoom = function(delta) {
+        var s = board.sprite.parent.scale;
+        s.x = Math.max(0.1, Math.min(s.x + delta, 1));
+        s.y = Math.max(0.1, Math.min(s.y + delta, 1));
+    }
 };

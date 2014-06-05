@@ -1,9 +1,9 @@
 WallApp = {};
 
 WallApp.init = function() {
-    var BOARD_WIDTH = 900//0;
-    var BOARD_HEIGHT = 600//0;
-    var CARD_COUNT = 1000;
+    var BOARD_WIDTH = 9000;
+    var BOARD_HEIGHT = 6000;
+    var CARD_COUNT = 400;
 
     WallApp.stage = new PIXI.Stage(0x2557a7);
 
@@ -29,6 +29,13 @@ WallApp.init = function() {
         card.sprite.y = Math.random() * BOARD_HEIGHT;
         container.addChild(card.sprite);
     }
+
+    // register mouse wheel event
+    $(document).on('mousewheel', function(event) {
+        event.preventDefault();
+        var norm = event.deltaY / 1000;
+        board.zoom(norm);
+    })
 
     requestAnimFrame(WallApp.gameLoop);
 };
