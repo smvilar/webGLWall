@@ -1,5 +1,6 @@
 Card = function(textToDisplay) {
-    var TEXT_OFFSET = 20;
+    var TEXT_OFFSET_X = 30;
+    var TEXT_OFFSET_Y = 60;
     // hardcoded because for some reason the sprite won't give me the correct size :(
     var WIDTH = 297;
     var HEIGHT = 298;
@@ -10,12 +11,12 @@ Card = function(textToDisplay) {
     this.sprite.pivot.y = HEIGHT/2;
 
     var text = new PIXI.Text(textToDisplay, {
-        font:'10pt Helvetica', align:'center',
-        wordWrap:true, wordWrapWidth:WIDTH-TEXT_OFFSET
+        font:'10pt Helvetica', align:'left',
+        wordWrap:true, wordWrapWidth:WIDTH-TEXT_OFFSET_X*2
     });
     // offset the text
-    text.x = TEXT_OFFSET;
-    text.y = TEXT_OFFSET;
+    text.x = TEXT_OFFSET_X;
+    text.y = TEXT_OFFSET_Y;
 
     this.sprite.addChild(text);
 

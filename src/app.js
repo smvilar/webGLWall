@@ -26,7 +26,7 @@ WallApp.init = function() {
     container.addChild(board.sprite);
     // center the board in the window
     board.pan($(window).width()/2, $(window).height()/2);
-    board.zoom(-1);
+    board.zoom(-0.2);
 
     // add test cards
     for (var i = 0; i < CARD_COUNT; i++) {
