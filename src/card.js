@@ -6,6 +6,8 @@ Card = function(textToDisplay) {
 
     this.sprite = new PIXI.Sprite.fromImage('img/yellow-post-it-note-md.png');
     this.sprite.setInteractive(true);
+    this.sprite.pivot.x = WIDTH/2;
+    this.sprite.pivot.y = HEIGHT/2;
 
     var text = new PIXI.Text(textToDisplay, {
         font:'10pt Helvetica', align:'center',
@@ -20,11 +22,13 @@ Card = function(textToDisplay) {
     var card = this;
 
     this.sprite.mouseover = function(mouseData) {
-        //card.overlay.visible = true;
+        card.sprite.scale.x = 1.1;
+        card.sprite.scale.y = 1.1;
     };
 
     this.sprite.mouseout = function(mouseData) {
-        //card.overlay.visible = false;
+        card.sprite.scale.x = 1.0;
+        card.sprite.scale.y = 1.0;
     };
 
     this.sprite.mousedown = function(mouseData) {
