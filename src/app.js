@@ -24,7 +24,7 @@ WallApp.init = function() {
 
     // add test cards
     for (var i = 0; i < CARD_COUNT; i++) {
-        var card = new Card('Quisque molestie urna ac nisl euismod porttitor. Nullam iaculis, ligula molestie suscipit condimentum, diam risus interdum ante, ac aliquet nulla mi mattis lorem. Nam interdum est in sem venenatis, eget congue dolor faucibus. Maecenas at mi in odio euismod adipiscing. Nulla porta mauris nec pulvinar congue.');
+        var card = new Card(getRandomString());
         card.sprite.x = -BOARD_WIDTH/2 + Math.random() * BOARD_WIDTH;
         card.sprite.y = -BOARD_HEIGHT/2 + Math.random() * BOARD_HEIGHT;
         container.addChild(card.sprite);
@@ -39,6 +39,17 @@ WallApp.init = function() {
 
     requestAnimFrame(WallApp.gameLoop);
 };
+
+function getRandomString() {
+    var WORDS = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque posuere eleifend justo, tristique eleifend tellus accumsan eget. Etiam vel enim vitae felis malesuada ullamcorper. Aenean vitae imperdiet eros. Fusce quis eros a urna rutrum dapibus. Nulla vel iaculis nulla, eu adipiscing neque. Curabitur mi orci, venenatis a accumsan non, convallis vel felis. Vestibulum quis nisi nisi. Proin bibendum mi quis scelerisque aliquam. Sed imperdiet, diam non sodales feugiat, leo ipsum malesuada urna, eu commodo magna felis non nibh. Maecenas ut nulla eget purus posuere sodales sed in risus. Vestibulum accumsan erat nunc, at sagittis nunc fringilla vel. Nullam turpis lacus, aliquam id ullamcorper eu, consequat vel purus. Phasellus aliquet elit nec eros volutpat tincidunt. Ut vitae tempus est.'.split(' ');
+    var string = '';
+    for (var i = 0; i < 50; i++) {
+        var idx = Math.floor(Math.random() * WORDS.length);
+        var randomWord = WORDS[idx];
+        string += randomWord + ' ';
+    }
+    return string;
+}
 
 WallApp.resize = function() {
     WallApp.renderer.resize($(window).width(), $(window).height());
