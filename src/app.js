@@ -7,13 +7,10 @@ WallApp.init = function() {
 
     WallApp.stage = new PIXI.Stage(0x2557a7);
 
-    // let pixi choose WebGL or canvas
     WallApp.renderer = PIXI.autoDetectRenderer($(window).width(), $(window).height());
+    $("body").append(WallApp.renderer.view);
 
     $(window).resize(WallApp.resize);
-
-    // attach render to page
-    $("body").append(WallApp.renderer.view);
 
     var container = new PIXI.DisplayObjectContainer();
     WallApp.stage.addChild(container);
@@ -21,12 +18,15 @@ WallApp.init = function() {
     // add board
     var board = new Board(BOARD_WIDTH, BOARD_HEIGHT);
     container.addChild(board.sprite);
+    // center the board in the window
+    board.pan($(window).width()/2, $(window).height()/2);
+    board.zoom(-1);
 
     // add test cards
     for (var i = 0; i < CARD_COUNT; i++) {
         var card = new Card('Quisque molestie urna ac nisl euismod porttitor. Nullam iaculis, ligula molestie suscipit condimentum, diam risus interdum ante, ac aliquet nulla mi mattis lorem. Nam interdum est in sem venenatis, eget congue dolor faucibus. Maecenas at mi in odio euismod adipiscing. Nulla porta mauris nec pulvinar congue.');
-        card.sprite.x = Math.random() * BOARD_WIDTH;
-        card.sprite.y = Math.random() * BOARD_HEIGHT;
+        card.sprite.x = -BOARD_WIDTH/2 + Math.random() * BOARD_WIDTH;
+        card.sprite.y = -BOARD_HEIGHT/2 + Math.random() * BOARD_HEIGHT;
         container.addChild(card.sprite);
     }
 

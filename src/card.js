@@ -1,11 +1,11 @@
 Card = function(textToDisplay) {
     var TEXT_OFFSET = 20;
-    // hardcoded because for some reason the sprite won't give me the right size
+    // hardcoded because for some reason the sprite won't give me the correct size :(
     var WIDTH = 297;
     var HEIGHT = 298;
 
     this.sprite = new PIXI.Sprite.fromImage('img/yellow-post-it-note-md.png');
-    this.sprite.setInteractive(true);
+    this.sprite.interactive = true;
     this.sprite.pivot.x = WIDTH/2;
     this.sprite.pivot.y = HEIGHT/2;
 
@@ -22,8 +22,8 @@ Card = function(textToDisplay) {
     var card = this;
 
     this.sprite.mouseover = function(mouseData) {
-        card.sprite.scale.x = 1.1;
-        card.sprite.scale.y = 1.1;
+        card.sprite.scale.x = 1.05;
+        card.sprite.scale.y = 1.05;
     };
 
     this.sprite.mouseout = function(mouseData) {
